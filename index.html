@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Special Message ❤️</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <audio id="romanticMusic" autoplay loop>
+    <source src="romantic.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="prankMusic">
+    <source src="prank.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="container" id="namePrompt">
+    <h1>Enter your name 😊</h1>
+    <input type="text" id="username" placeholder="Your name..." />
+    <br><br>
+    <button class="button" onclick="startMessage()">Start</button>
+  </div>
+
+  <div class="container hidden" id="mainMessage">
+    <div class="heart">❤️</div>
+    <h1 id="greeting"></h1>
+    <p>From the moment I saw you, I knew you were special...</p>
+    <p>Will you be mine forever? 💍</p>
+    <button class="button" onclick="startCountdown()">Tap to Continue...</button>
+  </div>
+
+  <div class="container hidden" id="countdownScreen">
+    <h1>Something special is coming in...</h1>
+    <h1 id="countdown">3</h1>
+  </div>
+
+  <div class="container hidden" id="prankReveal">
+    <h1>😂 GOTCHA <span id="revealName"></span>!</h1>
+    <p>This was just a prank made with love! You're awesome! 🎉</p>
+    <img src="https://media.giphy.com/media/26BRuo6sLetdllPAQ/giphy.gif" alt="Prank">
+  </div>
+
+  <script>
+    function startMessage() {
+      const name = document.getElementById('username').value.trim();
+      if (!name) return alert('Please enter your name!');
+      document.getElementById('namePrompt').style.display = 'none';
+      document.getElementById('mainMessage').style.display = 'block';
+      document.getElementById('greeting').innerText = name + ", I have something to say...";
+      document.getElementById('revealName').innerText = name;
+    }
+
+    function startCountdown() {
+      document.getElementById('mainMessage').style.display = 'none';
+      document.getElementById('countdownScreen').style.display = 'block';
+      let count = 3;
+      const interval = setInterval(() => {
+        count--;
+        document.getElementById('countdown').innerText = count;
+        if (count === 0) {
+          clearInterval(interval);
+          document.getElementById('countdownScreen').style.display = 'none';
+          document.getElementById('prankReveal').style.display = 'block';
+
+          // Switch music
+          document.getElementById('romanticMusic').pause();
+          document.getElementById('prankMusic').play();
+        }
+      }, 1000);
+    }
+  </script>
+</body>
+</html>

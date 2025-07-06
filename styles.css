@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to top right, #ff9a9e, #fad0c4);
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.container {
+  padding: 60px 20px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+h1 {
+  font-size: 2.5em;
+  text-shadow: 2px 2px #ff4081;
+}
+
+p {
+  font-size: 1.2em;
+  margin-top: 30px;
+}
+
+.heart {
+  font-size: 4em;
+  color: red;
+  animation: beat 1s infinite;
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 1.1em;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  width: 80%;
+  max-width: 300px;
+}
+
+.button {
+  margin-top: 30px;
+  padding: 12px 25px;
+  background-color: #fff;
+  color: #ff4081;
+  font-size: 1em;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background-color: #ff4081;
+  color: #fff;
+}
+
+img {
+  margin-top: 30px;
+  width: 80%;
+  max-width: 300px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px #fff;
+}
+
+@keyframes beat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hidden {
+  display: none;
+}
+
+body::before {
+  content: "❤️ 💕 💗 💓 💖 💘 💝 ";
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-size: 2em;
+  width: 100%;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.2);
+  animation: floatHearts 10s linear infinite;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes floatHearts {
+  0% { transform: translateY(100%) rotate(0deg); }
+  100% { transform: translateY(-100%) rotate(360deg); }
+}
